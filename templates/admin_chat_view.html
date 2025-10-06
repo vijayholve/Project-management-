@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin View Chat</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_chat.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Chat Between {{ student.name }} and {{ mentor.name }}</h2>
+    <div class="chat-box">
+      {% for msg in messages %}
+        <div class="message">
+          <strong>{{ 'Mentor' if msg.mentor_id == mentor.id else 'Student' }}:</strong>
+          {{ msg.content }} <br>
+          <small>{{ msg.timestamp.strftime('%d-%m-%Y %H:%M') }}</small>
+        </div>
+      {% else %}
+        <p>No messages yet.</p>
+      {% endfor %}
+    </div>
+    <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+  </div>
+</body>
+</html>

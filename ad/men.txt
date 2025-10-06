@@ -1,0 +1,36 @@
+python -m flask shell
+from app import db, User
+from werkzeug.security import generate_password_hash
+
+admin = User(
+    name='Admin',
+    email='admin@example.com',
+    roll_number='A001',
+    password=generate_password_hash('adminpass'),
+    role='admin'
+)
+
+db.session.add(admin)
+db.session.commit()
+mentor = User(
+    name='Mentor User',
+    email='mentor@example.com',
+    roll_number='M001',
+    password=generate_password_hash('mentorpass'),
+    role='mentor'
+)
+db.session.add(mentor)
+db.session.commit()
+Admin:
+
+Roll/email: admin@example.com or A001
+
+Password: adminpass
+
+Mentor:
+
+Roll/email: mentor@example.com or M001
+
+Password: mentorpass
+
+vishal 2020

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mentor Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/mentor_dashboard.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="dash-wrapper">
+
+    <!-- ====  Header  ==== -->
+    <header>
+      <h1>Welcome, {{ user.name }} <span>(Mentor)</span></h1>
+      <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+    </header>
+
+    <!-- ====  KPI / Stats  ==== -->
+    <section class="kpi-card">
+      <h2>Total Students Assigned</h2>
+      <p id="total-students" class="big-number">{{ students|length }}</p>
+    </section>
+
+    <!-- ====  Students Table  ==== -->
+    <section class="table-card">
+      <h2>Your Assigned Students</h2>
+
+      {% if students %}
+        <div class="table-wrapper">
+          <table class="student-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th class="center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for s in students %}
+              <tr>
+                <td data-label="Name">{{ s.name }}</td>
+                <td data-label="Email">{{ s.email }}</td>
+                <td data-label="Status">
+                  {% set ups = uploads | selectattr('user_id','equalto',s.id) | list %}
+                  {% if ups|length > 0 %}
+                    <span class="badge uploaded">Uploaded</span>
+                  {% else %}
+                    <span class="badge pending">No Uploads</span>
+                  {% endif %}
+                </td>
+                <td data-label="Actions" class="center">
+                  <a class="btn-outline" href="{{ url_for('mentor_view_student', student_id=s.id) }}">Profile</a>
+                  <a class="btn-outline second" href="{{ url_for('mentor_chat', student_id=s.id) }}">Chat</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <p class="no-data">No students assigned yet.</p>
+      {% endif %}
+    </section>
+
+  </div>
+
+  <!-- Count-up animation -->
+  <script>
+    const num = document.getElementById("total-students");
+    if(num){
+      const end = parseInt(num.textContent,10) || 0;
+      let cur = 0;
+      const tick = () => {
+        cur += Math.ceil(end/20);
+        if(cur >= end) { num.textContent = end; }
+        else { num.textContent = cur; requestAnimationFrame(tick);}
+      };
+      tick();
+    }
+  </script>
+
+</body>
+</html>

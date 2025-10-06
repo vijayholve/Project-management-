@@ -1,0 +1,119 @@
+/* ——— Base ——— */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Poppins',sans-serif;
+  background:#0d1927;
+  color:#e9f8ff;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* ——— Animated background waves ——— */
+.waves{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:-1}
+.waves li{
+  position:absolute;
+  display:block;
+  list-style:none;
+  width:120%;
+  height:160px;
+  background:rgba(255,255,255,.03);
+  animation:wave 25s linear infinite;
+  bottom:-140px;
+  transform-origin:center;
+}
+.waves li:nth-child(1){animation-delay:0s}
+.waves li:nth-child(2){animation-delay:-5s;opacity:.7}
+.waves li:nth-child(3){animation-delay:-10s;opacity:.5}
+.waves li:nth-child(4){animation-delay:-15s;opacity:.3}
+.waves li:nth-child(5){animation-delay:-20s;opacity:.15}
+
+@keyframes wave{
+  0%{transform:translateX(-50%) rotate(0deg)}
+  50%{transform:translateX(-50%) rotate(180deg)}
+  100%{transform:translateX(-50%) rotate(360deg)}
+}
+
+/* ——— Card ——— */
+.signup-container{
+  width:95%;
+  max-width:420px;
+  padding:45px 38px 40px;
+  border-radius:20px;
+  background:rgba(255,255,255,.06);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter:blur(14px);
+  box-shadow:0 10px 35px rgba(0,183,255,.08);
+  text-align:center;
+}
+.signup-container h2{
+  font-size:1.9rem;
+  margin-bottom:28px;
+  background:linear-gradient(90deg,#00b4d8,#6a11cb);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* ——— Form ——— */
+.input-group{margin-bottom:22px;text-align:left}
+.input-group label{
+  display:block;
+  font-weight:500;
+  margin-bottom:6px;
+  font-size:.9rem;
+  color:#b0dcff;
+}
+.input-group input{
+  width:100%;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.07);
+  color:#e9f8ff;
+  transition:.3s;
+}
+.input-group input:focus{
+  border-color:#00b4d8;
+  box-shadow:0 0 8px rgba(0,180,216,.4);
+  outline:none;
+}
+
+/* ——— Button ——— */
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:50px;
+  font-weight:600;
+  font-size:1rem;
+  color:#fff;
+  background:linear-gradient(135deg,#00b4d8,#6a11cb);
+  box-shadow:0 8px 18px rgba(0,183,255,.25);
+  cursor:pointer;
+  transition:.35s;
+}
+button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 28px rgba(0,183,255,.35);
+}
+
+/* ——— Alt link ——— */
+.alt{margin-top:24px;font-size:.9rem;color:#cde8ff}
+.alt a{color:#00b4d8;text-decoration:none}
+.alt a:hover{text-decoration:underline}
+
+/* ——— Ajax alert ——— */
+#alert-message{
+  margin-top:18px;
+  display:none;
+  padding:12px;
+  border-radius:8px;
+  font-size:.85rem;
+}
+
+/* ——— Responsive ——— */
+@media(max-width:480px){
+  .signup-container{padding:35px 26px}
+}

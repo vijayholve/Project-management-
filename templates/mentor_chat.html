@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat with {{ student.name }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/mentor_chat.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="chat-container">
+  <div class="chat-header">
+    <h2>Chat with {{ student.name }}</h2>
+    <span class="roll">Roll No: {{ student.roll_number }}</span>
+  </div>
+
+  <div class="chat-box">
+    {% if messages %}
+      {% for msg in messages %}
+      <div class="chat-message {% if msg.sender_role == 'mentor' %}sent{% else %}received{% endif %}">
+          <div class="bubble">
+            <p>{{ msg.content }}</p>
+            <span class="timestamp">{{ msg.timestamp.strftime('%b %d, %I:%M %p') }}</span>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p class="no-messages">No messages yet.</p>
+    {% endif %}
+  </div>
+
+  <form method="POST" class="chat-form">
+    <textarea name="message" placeholder="Type a message..." required></textarea>
+    <div class="chat-actions">
+      <button type="submit" class="send-btn">Send</button>
+      <a href="{{ url_for('mentor_dashboard') }}" class="back-btn">Back to Dashboard</a>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

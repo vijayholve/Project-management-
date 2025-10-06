@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Project Submission Portal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/intro.css') }}">
+</head>
+<body>
+<!-- HTML -->
+<header>
+  <div class="logo">ACEM PROJECT‿SPHERE</div>
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('intro') }}">Home</a></li>
+      <li><a href="{{ url_for('login') }}">Login</a></li>
+      <li><a href="{{ url_for('signup') }}">Signup</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+  
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-content">
+      <h1>Welcome to the ACEM Project‿Sphere 👨‍💻</h1>
+      
+      <p class="tagline">"Where ACEM Projects Take Shape"</p>
+      <p class="motto">SUBMIT • SHARE • SUCCEED</p>
+      
+      <div class="cta-buttons">
+        <a href="{{ url_for('signup') }}" class="btn">Signup</a>
+        <a href="{{ url_for('login') }}" class="btn secondary">Login</a>
+      </div>      
+    </div>
+    
+  </section>
+<!-- About Section -->
+<section id="about">
+  <h2>Why ACEM Project‿Sphere?</h2>
+  <p class="about-subtitle">Transforming the way ACEM handles project submissions ✨</p>
+  
+  <div class="about-cards">
+    <div class="about-card">
+      <h3>🎓 For Students</h3>
+      <ul>
+        <li>📤 Upload all project files (code, PPTs, reports, videos)</li>
+        <li>💬 Chat directly with mentors</li>
+        <li>📄 View submission history</li>
+      </ul>
+    </div>
+
+    <div class="about-card">
+      <h3>👩‍🏫 For Mentors</h3>
+      <ul>
+        <li>🔍 View and review assigned student submissions</li>
+        <li>✅ Mark projects as complete</li>
+        <li>💭 Provide feedback directly</li>
+      </ul>
+    </div>
+
+    <div class="about-card">
+      <h3>🛠️ For Admin</h3>
+      <ul>
+        <li>👥 Manage all users (add/remove/update roles)</li>
+        <li>🔗 Assign and reassign mentors to students</li>
+        <li>📊 View analytics on project progress</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+  <!-- Features Section -->
+  <section id="features">
+    <h2>Features</h2>
+    <div class="features-container">
+      <div class="feature-panel">
+        <h3>Centralized Uploads</h3>
+        <p>Students upload projects, reports & PPTs in one place.</p>
+      </div>
+      <div class="feature-panel">
+        <h3>Mentor Dashboard</h3>
+        <p>Mentors track submissions & mark completion with checkboxes.</p>
+      </div>
+      <div class="feature-panel">
+        <h3>Feedback Form</h3>
+        <p>Mentors provide structured feedback for improvements.</p>
+      </div>
+      <div class="feature-panel">
+        <h3>Organized History</h3>
+        <p>All submissions and feedback stay organized semester-wise.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="cta">
+    <h2>Get Started</h2>
+    <p>Join now and make project submissions simple and stress-free.</p>
+    <br>
+    <a href="/signup" class="btn">Create Account</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 <span>ACEM Project‿Sphere</span>. All rights reserved.</p>
+  </footer>
+  
+
+  <!-- Scripts -->
+  <script src="{{ url_for('static', filename='js/intro.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.animated-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, #43cea2, #185a9d, #43cea2, #185a9d);
+  background-size: 400% 400%;
+  animation: gradient 18s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  width: 300px;
+}
+
+.form-container h2 {
+  color: #fff;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 6px;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
+.form-container p {
+  margin-top: 15px;
+  color: #fff;
+}
+
+.form-container a {
+  color: #fff;
+  text-decoration: underline;
+}

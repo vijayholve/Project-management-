@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Animated BG Test</title>
+  <style>
+    body, html {
+      height: 100%;
+      background: linear-gradient(270deg, #0f2027, #203a43, #2c5364);
+      background-size: 600% 600%;
+      animation: gradientBG 20s ease infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 0, 0, 0.3) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 70%, rgba(0, 255, 0, 0.3) 0%, transparent 50%),
+                  radial-gradient(circle at 50% 50%, rgba(0, 0, 255, 0.25) 0%, transparent 50%);
+      animation: moveBlobs 30s ease-in-out infinite alternate;
+      z-index: -1;
+      filter: blur(150px);
+    }
+
+    @keyframes moveBlobs {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(-20%, -20%); }
+      100% { transform: translate(0, 0); }
+    }
+
+    h1 {
+      position: relative;
+      z-index: 10;
+      color: white;
+      text-align: center;
+      margin-top: 40vh;
+    }
+  </style>
+</head>
+<body>
+  <div class="animated-bg"></div>
+  <h1>Animated Background Test</h1>
+</body>
+</html>

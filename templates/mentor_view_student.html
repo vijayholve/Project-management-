@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>View Student Profile</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/mentor_view_student.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="main-content">
+      <header>
+        <div class="header-left">
+          <h1>Student Profile: {{ student.name }}</h1>
+        </div>
+        <a href="{{ url_for('mentor_dashboard') }}" class="back-btn">Back</a>
+      </header>
+
+      <div class="card">
+        <h2>Student Info</h2>
+        <p><strong>Name:</strong> {{ student.name }}</p>
+        <p><strong>Email:</strong> {{ student.email }}</p>
+        <p><strong>Roll No:</strong> {{ student.roll_number }}</p>
+      </div>
+
+      <div class="card">
+        <h2>Uploaded Files</h2>
+        {% if uploads %}
+          <ul class="file-list">
+            {% for file in uploads %}
+              <li>
+                <strong>{{ file.file_type | capitalize }}:</strong>
+                <a href="{{ url_for('uploaded_file', filename=file.filename) }}" target="_blank">
+                  {{ file.filename }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No uploads found.</p>
+        {% endif %}
+
+      </div>
+
+      
+      <div class="card chat-card">
+        <h2>Chat with {{ student.name }}</h2>
+        <div class="chat-box">
+          {% for msg in messages %}
+            <div class="message">
+              <strong>
+                {% if msg.mentor_id == student.mentor_id %}
+                  You:
+                {% else %}
+                  {{ student.name }}:
+                {% endif %}
+              </strong> {{ msg.content }}
+            </div>
+          {% else %}
+            <div class="message">No messages yet.</div>
+          {% endfor %}
+        </div>
+        <form action="{{ url_for('send_message') }}" method="POST">
+          <input type="hidden" name="student_id" value="{{ student.id }}">
+          <textarea name="message" placeholder="Type your message here..." required></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</body>
+</html>

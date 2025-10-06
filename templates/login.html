@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - AI Career Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+  <!-- Optional: Bootstrap for flash alerts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Animated background -->
+  <div class="background">
+    <span style="top: 20%; left: 10%; width: 60px; height: 60px;"></span>
+    <span style="top: 70%; left: 80%; width: 50px; height: 50px;"></span>
+    <span style="top: 50%; left: 50%; width: 40px; height: 40px;"></span>
+    <span style="top: 10%; left: 70%; width: 70px; height: 70px;"></span>
+    <span style="top: 80%; left: 20%; width: 30px; height: 30px;"></span>
+  </div>
+
+  <div class="login-container">
+    <h1>Welcome to ACEM Project‿Sphere</h1>
+
+
+    <div class="background">
+      <span style="--i:0"></span>
+      <span style="--i:1"></span>
+      <span style="--i:2"></span>
+      <span style="--i:3"></span>
+      <span style="--i:4"></span>
+      <span style="--i:5"></span>
+      <span style="--i:6"></span>
+      <span style="--i:7"></span>
+      <span style="--i:8"></span>
+      <span style="--i:9"></span>
+    </div>
+    
+
+    <!-- Flash Messages for Login Errors -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form id="login-form" method="POST" action="{{ url_for('login') }}">
+      <div class="input-group">
+        <label for="roll_or_email">Email or Roll Number</label>
+        <input type="text" id="roll_or_email" name="roll_or_email" placeholder="Enter your email or roll number" required>
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="social-login">
+      <button id="google-login">Login with Google</button>
+      <button id="linkedin-login">Login with LinkedIn</button>
+    </div>
+
+    <p>Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

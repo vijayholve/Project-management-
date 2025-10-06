@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(to right, #141E30, #243B55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Animated floating circles */
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Updated animated background dots */
+.background span {
+  position: absolute;
+  display: block;
+  width: 25px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  animation: pulseMove 10s infinite ease-in-out;
+  animation-delay: calc(var(--i) * 0.4s);
+  top: calc(var(--i) * 7%);
+  left: calc(var(--i) * 9%);
+}
+
+@keyframes pulseMove {
+  0%, 100% {
+    transform: scale(1) translateY(0) translateX(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.4) translateY(-20px) translateX(15px);
+    opacity: 0.15;
+  }
+}
+/* Login card */
+.login-container {
+  background: #ffffffee;
+  color: #333;
+  padding: 40px 50px;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 420px;
+  animation: fadeIn 0.8s ease;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Gradient title */
+.login-container h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  background: linear-gradient(90deg, #00c9ff, #92fe9d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Input styles */
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #555;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #6c63ff;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.3);
+  outline: none;
+}
+
+/* Aesthetic Primary Button with Neon Glow */
+button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #8A2BE2, #00FFFF, #7FFFD4);
+  background-size: 200% 200%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+  margin-top: 12px;
+}
+
+button[type="submit"]:hover {
+  background-position: right center;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+}
+
+
+/* Social login buttons */
+.social-login {
+  margin-top: 20px;
+}
+
+.social-login button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #a90101, #ff8181);
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.social-login button:hover {
+  background: linear-gradient(to right, #ff4e50, #f9d423);
+  transform: scale(1.02);
+}
+
+/* Flash message styles */
+.alert {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Bottom text */
+p {
+  font-size: 14px;
+  margin-top: 18px;
+}
+
+p a {
+  color: #6a82fb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive for mobile */
+@media (max-width: 500px) {
+  .login-container {
+    padding: 30px 25px;
+  }
+
+  .login-container h1 {
+    font-size: 24px;
+  }
+}
